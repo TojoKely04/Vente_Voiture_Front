@@ -8,6 +8,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Components/ContentCategorie';
 import ContentCategorie from './Components/ContentCategorie';
+import Statistque from './statistique/Statistiques';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" element= {<Head/>} />
           <Route path="/Annonce" element= {<Liste/>} />
           <Route path ="/Detail" element={<Detail/>}/>
+          <Route path ="/Statistique" element={<Statistque/>}/>
       </Routes>
     </Router>
   );
