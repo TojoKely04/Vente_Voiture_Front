@@ -10,10 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Components/ContentCategorie';
 import ContentCategorie from './Components/ContentCategorie';
 import Statistque from './statistique/Statistiques';
-
+import SideBar from './Components/Sidebar';
 
 function App(){
   return(
+    <div className="main">
+    <SideBar/>
+    <div className="container">
     <Router>
       <Routes>
           <Route exact path="/" element= {<Head/>} />
@@ -23,6 +26,8 @@ function App(){
           <Route path ="/Statistique" element={<Statistque/>}/>
       </Routes>
     </Router>
+    </div>
+    </div>
   );
 }
 export default App;

@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Annonce",
+        "icon": "bi-gear-fill"
+    },
+    {
+        "title": "Statistiques",
+        "icon": "bi-info-circle-fill",
+        "childrens": [
+            {
+                "title": "Par rapport au date",
+                "path": "/login"
+            },
+            {
+                "title": "Par rapport au marque",
+                "path": "/register"
+            },
+            {
+                "title": "Par rapport au rpix",
+                "path": "/forgot-password"
+            }
+        ]
+    },
+    {
+        "title": "Gestion éléments",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Catégorie",
+                "path": "/profile"
+            },
+            {
+                "title": "Marque",
+                "path": "/logout"
+            },
+            {
+                "title": "Enérgie",
+                "path": "/logout"
+            },
+            {
+                "title": "Vitesse",
+                "path": "/logout"
+            }
+        ]
+    }
+]
