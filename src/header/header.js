@@ -1,20 +1,39 @@
-import React from 'react';
-import './header.css';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import { Search, Person, Menu } from 'react-bootstrap-icons';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
+function Example() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-function Head(){
-    return(
-        <nav className="navbar">
-        <div className="menu">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-        </div>
-        <a href="/logout">Logout</a>
-    </nav>
-    );
+  return (
+    <div className='' style={{marginTop:'0px',  marginLeft:'0px'}}>
+        <div>
+            <Navbar bg="" data-bs-theme="">
+                <Container  style={{marginLeft:'0px'}}>
+                <a onClick={handleShow} style={{color:'white'}}>Menu</a>
+                <Nav className="" style={{paddingLeft:'20px'}}>
+                    <Nav.Link href="#pricing" style={{position:'relative',  left:'270px'}}>Déconnexion</Nav.Link>
+                </Nav>
+                </Container>
+            </Navbar>
+      </div>
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
+    </div>
+  );
 }
-export default Head;
 
+export default Example;
