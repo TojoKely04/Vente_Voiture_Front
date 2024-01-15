@@ -1,8 +1,13 @@
 import React from "react";
-import '../Styles/Content.css';
+import '../assets/Content.css';
+import Header from '../header/header';
+import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 
 const ContentMoteur = () => {
     return (
+        <>
+        <Header/>
+        <Container>
         <div className="body--activity">
             <div className="">
                 <h1 className="ajout--title"> Ajouter Marque </h1>
@@ -25,6 +30,8 @@ const ContentMoteur = () => {
             </div>
                 
             </div>
+            </Container>
+            </>
     )
 }
 

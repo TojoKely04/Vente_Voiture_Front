@@ -1,25 +1,19 @@
 import React from "react";
-import '../Styles/Content.css';
-import Form from 'react-bootstrap/Form';
+import '../assets/Content.css';
 import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'; 
-import Button from 'react-bootstrap/Button';
+import Header from '../header/header';
+import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
+
 const ContentCategorie = () => {
     return (
         <>
-         {/* <div className="container"> */}
+        <Header/>
+        <Container>
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
-                <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                    <Form.Label column sm="2">
-                    Catégorie
-                    </Form.Label>
-                    <Col sm="10" >
-                        <Form.Control type="text" placeholder="Entrer le catégorie" style={{width:'700px'}}/>
-                        <Button variant="primary" style={{marginLeft:'720px', position:'relative', top:'-45px', height:'35px'}}>Ajouter</Button>{' '}
-                    </Col>
-                </Form.Group>
+                <p> Energie : <input type="text" name="InsertMarque" id="" /> </p>
             </div>
 
             <div className="">
@@ -40,9 +34,9 @@ const ContentCategorie = () => {
                     </tbody>
                 </Table>  
             </div> 
-             {/* </div> */}
-            </>
-    )
-}
+        </Container>
+        </>
+    );
+};
 
 export default ContentCategorie;

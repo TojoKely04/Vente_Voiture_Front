@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import user_icon from './Assets/person.png'
-import email_icon from './Assets/email.png'
-import password_icon from './Assets/password.png'
-import '../Styles/Login-SignUp.css';
+import user_icon from '../assets/image/person.png'
+import email_icon from '../assets/image/email.png'
+import password_icon from '../assets/image/password.png'
+import '../assets/Login-SignUp.css';
 
 const LoginSingUp = () => {
 
@@ -10,8 +10,7 @@ const LoginSingUp = () => {
 
   return (
     <>
-
-        <div className='container'>
+        <div className='login'>
             <div className='header'>
                 <div className="text">{action}</div>
                 <div className="underline"></div>
