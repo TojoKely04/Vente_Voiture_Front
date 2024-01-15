@@ -12,15 +12,33 @@ import './Components/ContentCategorie';
 import ContentCategorie from './Components/ContentCategorie';
 import Statistque from './statistique/Statistiques';
 import SideBar from './Components/Sidebar';
+import { Col, Row } from "reactstrap";
+import Header from "./header/header";
+import SideNavigation from "./header/SideBar";
 
 function App(){
+  const styles = {
+    contentDiv: {
+      display: "flex",
+    },
+    contentMargin: {
+      marginLeft: "10px",
+      width: "100%",
+    },
+  };
   return(
-    <div className="main">
-    <SideBar/>
-    <div className="container">
+    <>
+    <Row>
+    <Col>
+      <Header></Header>
+    </Col>
+  </Row>
+  <div style={styles.contentDiv}>
+    <SideNavigation></SideNavigation>
+    <div style={styles.contentMargin}>
     <Router>
       <Routes>
-          <Route exact path="/" element= {<Head/>} />
+          <Route exact path="/" element= {<Liste/>} />
           <Route path="/Annonce" element= {<Liste/>} />
           <Route path ="/Detail" element={<Detail/>}/>
           <Route path="/Component" element={<ContentCategorie/>} />
@@ -28,7 +46,8 @@ function App(){
       </Routes>
     </Router>
     </div>
-    </div>
+  </div>
+  </>
   );
 }
 export default App;
