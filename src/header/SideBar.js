@@ -9,7 +9,7 @@ import {
   SubMenu,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 const SideNavigation = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -38,15 +38,17 @@ const SideNavigation = () => {
       <Menu iconShape="square">
         <MenuItem  icon={<FaGem />} href="/"> Annonces</MenuItem>
         <SubMenu title="Tableau Statistique" icon={<FaHeart />}>
-          <MenuItem>Par Rapport Au Date</MenuItem>
+          <MenuItem><a href="/Annonce">Par Rapport Au Date</a></MenuItem>
           <MenuItem>Par Rapport au marque</MenuItem>
           <MenuItem>Par Rapport au prix</MenuItem>
         </SubMenu>
         <SubMenu title="Gestion Elements Necessaires" icon={<FaHeart />}>
-          <MenuItem>Categorie</MenuItem>
-          <MenuItem>Marque</MenuItem>
-          <MenuItem>Energie</MenuItem>
-          <MenuItem>Vitesse</MenuItem>
+          <a href="/Categorie"><MenuItem>Categorie</MenuItem></a>
+          <a href="/Marque"><MenuItem>Marque</MenuItem></a>
+          <a href="/Energie"><MenuItem>Energie</MenuItem></a>
+          <a href="/BoiteVitesse"><MenuItem>Vitesse</MenuItem></a>
+          <a href="/Moteur"><MenuItem >Moteur</MenuItem></a>
+
         </SubMenu>
         
       </Menu>

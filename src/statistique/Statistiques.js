@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
+import Header from '../header/header';
+import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
+
 //var CanvasJSReact = require('@canvasjs/react-charts');
  
 var CanvasJS = CanvasJSReact.CanvasJS;
@@ -41,12 +44,12 @@ const options = {
   const Stat = () => {
     return (
     <div>
-      <CanvasJSChart options = {options}
-        /* onRef={ref => this.chart = ref} */
-      />
-      {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-    </div>
-    );
+      <Header/>
+      <Container>
+        <CanvasJSChart options = {options}/>
+      </Container>
+    </div> 
+);
   }
 
 export default Stat;

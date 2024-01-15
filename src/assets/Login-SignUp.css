@@ -6,11 +6,11 @@
     background: linear-gradient(#2A00B7 , #42006C);
 } */
 
-.container{
+.login{
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 200px;
+    /* margin-top: 200px; */
     width: 600px;
     background: #fff;
     padding-bottom: 30px;
