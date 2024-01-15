@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 const ContentCategorie = () => {
     return (
-        <div className="container">
+        <>
+         {/* <div className="container"> */}
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
@@ -39,7 +40,8 @@ const ContentCategorie = () => {
                     </tbody>
                 </Table>  
             </div> 
-            </div>
+             {/* </div> */}
+            </>
     )
 }
 
