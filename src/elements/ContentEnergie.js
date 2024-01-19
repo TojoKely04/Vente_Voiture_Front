@@ -15,7 +15,7 @@ const ContentEnergie = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter énérgie </h2>
                 <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
-                <button type="submit">Ajouter</button>
+                <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
 

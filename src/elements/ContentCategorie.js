@@ -18,7 +18,7 @@ const ContentCategorie = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
                 <p> Catégories : <input type="text" name="InsertCategorie" id="" /> </p>
-                <button type="submit">Ajouter</button>
+                <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
 

@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import { Navbar, Nav } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
+import Position from 'rsuite/esm/Overlay/Position';
+import { Link } from 'react-router-dom';
 
 const MyNavBar = ({ active, onSelect, ...props }) => {
     return (
      <Navbar {...props}>
-       <Navbar.Brand href="#">MonSite</Navbar.Brand>
        <Nav onSelect={onSelect} activeKey={active}>
-         <Nav.Item eventKey="accueil">Accueil</Nav.Item>
-         <Nav.Item eventKey="2">Tutoriels</Nav.Item>
-         <Nav.Item eventKey="3">GBlog</Nav.Item>
-         <Nav.Menu title="Pratiques">
-           <Nav.Item eventKey="4">Structures de données</Nav.Item>
-           <Nav.Item eventKey="5">Algorithmes</Nav.Item>
-           <Nav.Item eventKey="6">Langages de programmation</Nav.Item>
-         </Nav.Menu>
+         <Nav.Item eventKey="accueil"><Link to=""  style={{textDecoration:'none'}}>Annonces</Link></Nav.Item>
+         <Nav.Item eventKey="2">Messages</Nav.Item>
+         <Nav.Item eventKey="3">Historiques des annonces</Nav.Item>
+         <Nav.Item eventKey="4">Favoris</Nav.Item>
+         <Nav.Item eventKey="5">Déconnexion</Nav.Item>
        </Nav>
      </Navbar>
     );
@@ -22,7 +20,6 @@ const MyNavBar = ({ active, onSelect, ...props }) => {
    
    export default function App() {
     const [activeTab, setActiveTab] = useState('accueil');
-   
     return (
      <div>
        <div>

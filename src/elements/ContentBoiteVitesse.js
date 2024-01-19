@@ -17,7 +17,7 @@ const ContentBoiteVitesse = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter vitesse </h2>
                 <p> Vitesse : <input type="text" name="InsertEnergie" id="" /> </p>
-                <button type="submit">Ajouter</button>
+                <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
 

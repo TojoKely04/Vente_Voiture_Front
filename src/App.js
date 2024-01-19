@@ -15,6 +15,7 @@ import { Col, Row } from "reactstrap";
 import Header from "./header/header";
 // import SideNavigation from "./header/SideBar";
 import Sidebar from './header/headerFront';
+import Annonce from './annonce/AnnonceFront';
 
 function App(){
   const styles = {
@@ -28,8 +29,7 @@ function App(){
   };
   return(
     <>
-  <div style={styles.contentDiv}>
-    {/* <SideNavigation></SideNavigation> */}
+  {/* <div style={styles.contentDiv}>
     <div style={styles.contentMargin}>
     <Router>
       <Routes>
@@ -46,7 +46,15 @@ function App(){
       </Routes>
     </Router>
     </div>
-  </div>
+  </div> */}
+
+  <div>
+  <Router>
+      <Routes>
+          <Route exact path="/" element= {<Annonce/>} />
+      </Routes>
+    </Router>
+  </div>  
   </>
   );
 }

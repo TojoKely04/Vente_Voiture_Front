@@ -14,7 +14,7 @@ const ContentMarque = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter marque </h2>
                 <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
-                <button type="submit">Ajouter</button>
+                <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
 

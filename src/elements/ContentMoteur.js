@@ -12,7 +12,7 @@ const ContentMoteur = () => {
             <div className="">
                 <h1 className="ajout--title"> Ajouter Marque </h1>
                 <p> Moteur : <input type="text" name="InsertMoteur" id="" /> </p>
-                <button type="submit">Ajouter</button>
+                <button type="submit" id="boutton">Ajouter</button>
             </div>
 
             <div className="">
