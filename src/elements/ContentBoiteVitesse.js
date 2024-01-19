@@ -14,13 +14,13 @@ const ContentBoiteVitesse = () => {
             <div>
             <Form>    
             <div className="">
-                <h2 className="ajout--title"> Ajouter énérgie </h2>
-                <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
+                <h2 className="ajout--title"> Ajouter vitesse </h2>
+                <p> Vitesse : <input type="text" name="InsertEnergie" id="" /> </p>
             </div>
             </Form>
 
             <div className="">
-            <h2 className="list--title">  Liste Energie </h2>
+            <h2 className="list--title">  Liste vitesse </h2>
                 <Table striped bordered hover>
                     <thead>
                     <tr>
@@ -30,7 +30,7 @@ const ContentBoiteVitesse = () => {
                     </thead>
                     <tbody>
                     <tr>
-                        <td> Diesel</td>
+                        <td> v1</td>
                         <td> <a href="#">Modifier</a> </td>
                         <td> <a href="#">Supprimer</a> </td>
                     </tr>

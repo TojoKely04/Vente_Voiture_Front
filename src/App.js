@@ -14,6 +14,7 @@ import SideBar from './header/SideBar';
 import { Col, Row } from "reactstrap";
 import Header from "./header/header";
 // import SideNavigation from "./header/SideBar";
+import Sidebar from './header/headerFront';
 
 function App(){
   const styles = {
