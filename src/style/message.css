@@ -1,0 +1,66 @@
+
+.form{
+    margin-left: 80px;
+    box-shadow: 0 0 10px rgb(255, 252, 252);
+    background-color: rgb(240, 237, 233);
+    height: 700px;
+    width: 90%;
+    text-align: center;
+}
+.paragraphe{
+    font-size: 30px;
+}
+.message-utilisateur{
+    margin-left: 405px;
+}
+/* 
+
+.paragraph{
+    text-align: center;
+    font-size: 50px;    
+    color: rgb(136, 164, 164);
+}
+.body--activity{
+
+    box-shadow: 0 0 10px rgb(255, 252, 252);
+    height:100%;
+    width: 90%;
+    margin-left: 200px;
+
+}
+.imageone{
+    height: 100px;
+
+}
+.param{
+
+    font-size: 35px;
+    margin-left: 100px;
+    margin-top: px;
+}
+.avatar{
+    border-radius: 45px;
+}
+.peopletwo{
+ margin-left: 80%;
+}
+
+.text{
+    
+    margin-left: 50%;
+    font-size: 40px;
+}
+.bouttom{
+    font-size: 40px;
+}
+/* .image{
+    margin-right: 45px;
+    border-radius: 45px;
+    margin: 45px;
+    
+}
+p.alt{
+    margin-bottom: -45px;
+    
+    
+} */
