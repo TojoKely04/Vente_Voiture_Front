@@ -8,7 +8,7 @@ import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
 
 function Detail(){
     return(
-        <>
+        <div>
             <Header/>
             <Container>
             <Row xs={1} md={1} className="g-4" >
@@ -44,7 +44,7 @@ function Detail(){
             ))}
             </Row>
             </Container>
-        </>
+        </div>
     )
 }
 export default Detail; 

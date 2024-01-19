@@ -33,7 +33,7 @@ export default function App(){
 
           <Route path ="/Statistique" element={<Statistque/>}/>
 
-          <Route path="/Login" element={<LoginSingUp/>}/>
+          <Route path="/Deconnexion" element={<LoginSingUp/>}/>
       </Routes>
     </Router>
   );
