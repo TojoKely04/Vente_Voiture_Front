@@ -29,7 +29,7 @@ function App(){
   };
   return(
     <>
-  {/* <div style={styles.contentDiv}>
+   <div style={styles.contentDiv}>
     <div style={styles.contentMargin}>
     <Router>
       <Routes>
@@ -46,15 +46,7 @@ function App(){
       </Routes>
     </Router>
     </div>
-  </div> */}
-
-  <div>
-  <Router>
-      <Routes>
-          <Route exact path="/" element= {<Annonce/>} />
-      </Routes>
-    </Router>
-  </div>  
+  </div> 
   </>
   );
 }
