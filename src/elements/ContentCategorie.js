@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'; 
 import Header from '../header/header';
+
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 
 const ContentCategorie = () => {
@@ -11,14 +12,17 @@ const ContentCategorie = () => {
         <>
         <Header/>
         <Container>
+            <div>
+            <Form>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
-                <p> Energie : <input type="text" name="InsertMarque" id="" /> </p>
+                <p> Catégories : <input type="text" name="InsertMarque" id="" /> </p>
             </div>
+            </Form>
 
             <div className="">
             <h2 className="list--title">  Liste Categorie </h2>
-                <Table className="striped bordered hover ">
+                <Table striped bordered hover>
                     <thead>
                     <tr>
                         <td> Nom </td>
@@ -34,6 +38,7 @@ const ContentCategorie = () => {
                     </tbody>
                 </Table>  
             </div> 
+            </div>
         </Container>
         </>
     );

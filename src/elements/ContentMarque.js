@@ -1,37 +1,43 @@
 import React from "react";
 import '../assets/Content.css';
 import Header from '../header/header';
+import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 
 const ContentMarque = () => {
     return (
         <>
         <Header/>
-        <Container>
-        <div className="body--activity">
+            <Container>
+            <div>
+            <Form>    
             <div className="">
-                <h1 className="ajout--title"> Ajouter Marque </h1>
+                <h2 className="ajout--title"> Ajouter marque </h2>
                 <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
             </div>
+            </Form>
 
             <div className="">
-            <h1 className="list--title">  Liste Marque </h1>
-                <table>
+            <h2 className="list--title">  Liste Marques </h2>
+                <Table striped bordered hover>
+                    <thead>
                     <tr>
                         <td> Nom </td>
                         <td> Action </td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
-                        <td> Nom Marque </td>
+                        <td> Audi </td>
                         <td> <a href="#">Modifier</a> </td>
                         <td> <a href="#">Supprimer</a> </td>
                     </tr>
-                </table>  
+                    </tbody>
+                </Table>  
+            </div> 
             </div>
-                
-            </div>
-            </Container>
-            </>
+        </Container>
+        </>
     )
 }
 

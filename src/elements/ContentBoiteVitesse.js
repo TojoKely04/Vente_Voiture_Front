@@ -3,51 +3,44 @@ import '../assets/Content.css';
 import { Col, Row } from "reactstrap";
 import SideNavigation from "../header/SideBar";
 import Header from '../header/header';
+import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
 
 const ContentBoiteVitesse = () => {
-    const styles = {
-        contentDiv: {
-          display: "flex",
-        },
-        contentMargin: {
-          marginLeft: "10px",
-          width: "100%",
-        },
-      };
     return (
       <>
       <Header/>
       <Container>
-          <div style={styles.contentDiv}>
-            <div style={styles.contentMargin}>
-            <div className="body--activity">
-                <div className="">
-                    <h1 className="ajout--title"> Ajouter Boite de Vitesse </h1>
-                    <p> Boite de vitesse : <input type="text" name="InsertMarque" id="" /> </p>
-                </div>
+            <div>
+            <Form>    
+            <div className="">
+                <h2 className="ajout--title"> Ajouter énérgie </h2>
+                <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
+            </div>
+            </Form>
 
-                <div className="">
-                <h1 className="list--title">  Liste Boite de vitesse </h1>
-                    <table>
-                        <tr>
-                            <td> Nom </td>
-                            <td> Action </td>
-                        </tr>
-                        <tr>
-                            <td> Nom Boite de vitesse </td>
-                            <td> <a href="#">Modifier</a> </td>
-                            <td> <a href="#">Supprimer</a> </td>
-                        </tr>
-                    </table>  
-                </div>
-                    
-                </div>
-                </div>
-      </div>
-      </Container>
-      </>
-    )
-}
+            <div className="">
+            <h2 className="list--title">  Liste Energie </h2>
+                <Table striped bordered hover>
+                    <thead>
+                    <tr>
+                        <td> Nom </td>
+                        <td> Action </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> Diesel</td>
+                        <td> <a href="#">Modifier</a> </td>
+                        <td> <a href="#">Supprimer</a> </td>
+                    </tr>
+                    </tbody>
+                </Table>  
+            </div> 
+            </div>
+        </Container>
+         </>
+    );
+};
 
 export default ContentBoiteVitesse;

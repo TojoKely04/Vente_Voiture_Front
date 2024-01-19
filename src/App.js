@@ -10,31 +10,44 @@ import Energie from './elements/ContentEnergie';
 import Marque from './elements/ContentMarque';
 import BoiteVitesse from './elements/ContentBoiteVitesse';
 import Statistque from './statistique/Statistiques';
+import SideBar from './header/SideBar';
 import { Col, Row } from "reactstrap";
 import Header from "./header/header";
-import SideNavigation from "./header/SideBar";
-import ReactDOM from "react-dom/client";
-import LoginSingUp from './login/LoginSingUp';
+// import SideNavigation from "./header/SideBar";
 
-export default function App(){
-  
+function App(){
+  const styles = {
+    contentDiv: {
+      display: "flex",
+    },
+    contentMargin: {
+      marginLeft: "10px",
+      width: "100%",
+    },
+  };
   return(
+    <>
+  <div style={styles.contentDiv}>
+    {/* <SideNavigation></SideNavigation> */}
+    <div style={styles.contentMargin}>
     <Router>
       <Routes>
           <Route exact path="/" element= {<Liste/>} />
           <Route path="/Annonce" element= {<Liste/>} />
           <Route path ="/Detail" element={<Detail/>}/>
-      
+
           <Route path="/Categorie" element={<Categorie/>} />
           <Route path="/Energie" element={<Energie/>} />
           <Route path="/Marque" element={<Marque/>} />
           <Route path="/Vitesse" element={<BoiteVitesse/>} />
           <Route path="/Moteur" element={<Moteur/>} />
-
           <Route path ="/Statistique" element={<Statistque/>}/>
-
-          <Route path="/Deconnexion" element={<LoginSingUp/>}/>
       </Routes>
     </Router>
+    </div>
+  </div>
+  </>
   );
 }
+export default App;
+

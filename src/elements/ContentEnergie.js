@@ -2,37 +2,44 @@ import React from "react";
 import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
+import Table from 'react-bootstrap/Table';
+
 
 const ContentEnergie = () => {
     return (
         <>
-        <Header/>
+        <Header/> 
         <Container>
-        <div className="body--activity">
+            <div>
+            <Form>    
             <div className="">
-                <h1 className="ajout--title"> Ajouter Energie </h1>
-                <p> Energie : <input type="text" name="InsertMarque" id="" /> </p>
+                <h2 className="ajout--title"> Ajouter énérgie </h2>
+                <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
             </div>
+            </Form>
 
             <div className="">
-            <h1 className="list--title">  Liste Energie </h1>
-                <table>
+            <h2 className="list--title">  Liste Energie </h2>
+                <Table striped bordered hover>
+                    <thead>
                     <tr>
                         <td> Nom </td>
                         <td> Action </td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
-                        <td> Nom Energie </td>
+                        <td> Diesel</td>
                         <td> <a href="#">Modifier</a> </td>
                         <td> <a href="#">Supprimer</a> </td>
                     </tr>
-                </table>  
-            </div>
-                
+                    </tbody>
+                </Table>  
+            </div> 
             </div>
         </Container>
         </>
-    )
-}
+    );
+};
 
 export default ContentEnergie;
