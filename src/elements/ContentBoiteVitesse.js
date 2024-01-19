@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import '../assets/Content.css';
 import { Col, Row } from "reactstrap";
 import SideNavigation from "../header/SideBar";
@@ -8,15 +8,86 @@ import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
 import './content.css'; 
 
 const ContentBoiteVitesse = () => {
+    const [groups, setGroups] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+          const result = await fetch(`vitesse`);
+          const body = await result.json();
+          setGroups(body);
+        }
+        fetchData();
+      }, []);
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const vitesse = form.elements.vitesse.value;
+        try{
+            const formData = {
+                "vitesse":vitesse
+            };
+            console.log(JSON.stringify(formData));
+            const response = await fetch(`/vitesse`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                async function fetchData() {
+                    const result = await fetch(`vitesse`);
+                    const body = await result.json();
+                    setGroups(body);
+                }
+                fetchData();
+
+            } else {
+                // La requête a échoué, gérer les erreurs si nécessaire
+                console.error('Erreur lors de l\'insertion de l\'objet');
+            }
+        } catch (error) {
+            alert('Erreur réseau :', error);
+        }
+    };
+
+    const groupList = groups.map(group => {
+        return <tr>
+            <td> {group.vitesse}</td>
+            <td> <a href="#">Modifier</a> </td>
+            <td> <button onClick={() => remove(group.idVitesse)}>Supprimer</button> </td>
+        </tr>
+        
+    });
+
+    const remove = async (id) => {
+        await fetch(`vitesse/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        }).then(() => {
+            async function fetchData() {
+                const result = await fetch(`vitesse`);
+                const body = await result.json();
+                setGroups(body);
+            }
+            fetchData();
+        });
+    }
+    
     return (
       <>
       <Header/>
       <Container>
             <div>
-            <Form>    
+            <Form onSubmit={onSubmit}>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter vitesse </h2>
-                <p> Vitesse : <input type="text" name="InsertEnergie" id="" /> </p>
+                <p> Vitesse : <input type="text" id="vitesse" /> </p>
                 <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
@@ -31,11 +102,7 @@ const ContentBoiteVitesse = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td> v1</td>
-                        <td> <a href="#">Modifier</a> </td>
-                        <td> <a href="#">Supprimer</a> </td>
-                    </tr>
+                    {groupList}
                     </tbody>
                 </Table>  
             </div> 
@@ -46,3 +113,5 @@ const ContentBoiteVitesse = () => {
 };
 
 export default ContentBoiteVitesse;
+
+
