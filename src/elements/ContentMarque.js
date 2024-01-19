@@ -3,7 +3,7 @@ import '../assets/Content.css';
 import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
-
+import './content.css'; 
 const ContentMarque = () => {
     return (
         <>
@@ -14,6 +14,7 @@ const ContentMarque = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter marque </h2>
                 <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
+                <button type="submit">Ajouter</button>
             </div>
             </Form>
 

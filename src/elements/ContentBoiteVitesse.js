@@ -5,6 +5,7 @@ import SideNavigation from "../header/SideBar";
 import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
+import './content.css'; 
 
 const ContentBoiteVitesse = () => {
     return (
@@ -16,6 +17,7 @@ const ContentBoiteVitesse = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter vitesse </h2>
                 <p> Vitesse : <input type="text" name="InsertEnergie" id="" /> </p>
+                <button type="submit">Ajouter</button>
             </div>
             </Form>
 

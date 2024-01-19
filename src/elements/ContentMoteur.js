@@ -2,7 +2,7 @@ import React from "react";
 import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
-
+import './content.css'; 
 const ContentMoteur = () => {
     return (
         <>
@@ -12,6 +12,7 @@ const ContentMoteur = () => {
             <div className="">
                 <h1 className="ajout--title"> Ajouter Marque </h1>
                 <p> Moteur : <input type="text" name="InsertMoteur" id="" /> </p>
+                <button type="submit">Ajouter</button>
             </div>
 
             <div className="">

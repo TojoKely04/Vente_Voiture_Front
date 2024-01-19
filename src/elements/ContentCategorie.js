@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'; 
 import Header from '../header/header';
+import './content.css'; 
 
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 
@@ -16,7 +17,8 @@ const ContentCategorie = () => {
             <Form>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
-                <p> Catégories : <input type="text" name="InsertMarque" id="" /> </p>
+                <p> Catégories : <input type="text" name="InsertCategorie" id="" /> </p>
+                <button type="submit">Ajouter</button>
             </div>
             </Form>
 

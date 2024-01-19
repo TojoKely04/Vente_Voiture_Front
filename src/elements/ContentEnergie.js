@@ -4,7 +4,7 @@ import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
 
-
+import './content.css'; 
 const ContentEnergie = () => {
     return (
         <>
@@ -15,6 +15,7 @@ const ContentEnergie = () => {
             <div className="">
                 <h2 className="ajout--title"> Ajouter énérgie </h2>
                 <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
+                <button type="submit">Ajouter</button>
             </div>
             </Form>
 
