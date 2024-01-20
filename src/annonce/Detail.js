@@ -1,12 +1,25 @@
-import React from 'react';
+import {React , useState , useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
+import { useParams } from "react-router-dom";
 
+// Get ID from URL
 function Detail(){
+    var {id} = useParams();
+    console.log(id);
+    const [annonce, setAnnonce] = useState([]);
+
+    useEffect((id) => {
+        fetch('/annonces/'+id)
+          .then(response => response.json())
+          .then(data => setAnnonce(data));
+          console.log(annonce);
+      }, []);
+      
     return(
         <div>
             <Header/>
@@ -22,20 +35,20 @@ function Detail(){
                 <div style={{float:'left'}} >
                 <Card.Body>
                 <Card.Text>
-                        <p>Nom :</p>
-                        <p>Catégories : </p>
-                        <p>Marque :</p>
-                        <p>Date de publication :</p>
-                        <p>Couleur : </p>
-                        <p>Moteur :</p>
-                        <p>Kilometrage :</p>
-                        <p>Année de sortie :</p>
-                        <p>Vitesse :</p>
-                        <p>Enérgie :</p>
-                        <p>Prix de vente :</p>
-                        <p>Auteur: </p>
-                        <Button variant="success">Accepter</Button>{' '}
-                        <Button variant="danger">Refuser</Button>{' '}
+                {/* <p>Nom : {annonce.nom}</p>
+                <p>Catégories : {annonce.categorie.categorie} </p>
+                <p>Marque : {annonce.marque.marque}</p>
+                <p>Date de publication : {annonce.datePublication}</p>
+                <p>Couleur : {annonce.couleur}</p>
+                <p>Moteur : {annonce.moteur.moteur}</p>
+                <p>Kilometrage : {annonce.anneeSortie}</p>
+                <p>Année de sortie : {annonce.anneeSortie}</p>
+                <p>Vitesse : {annonce.boiteVitesse.vitesse}</p>
+                <p>Enérgie : {annonce.energie.energie}</p>
+                <p>Prix de vente : {annonce.prix}</p>
+                <p>Auteur: {annonce.utilisateur.nom}</p> */}
+                    <Button variant="success">Accepter</Button>{' '}
+                    <Button variant="danger">Refuser</Button>{' '}
                 </Card.Text>
                 </Card.Body>
                 </div>
@@ -45,6 +58,6 @@ function Detail(){
             </Row>
             </Container>
         </div>
-    )
-}
+    );
+};
 export default Detail; 

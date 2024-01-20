@@ -35,7 +35,7 @@ function App(){
       <Routes>
           <Route exact path="/" element= {<Liste/>} />
           <Route path="/Annonce" element= {<Liste/>} />
-          <Route path ="/Detail" element={<Detail/>}/>
+          <Route path ="/Detail/:id" element={<Detail/>}/>
 
           <Route path="/Categorie" element={<Categorie/>} />
           <Route path="/Energie" element={<Energie/>} />
