@@ -35,7 +35,6 @@ const LoginSingUp = () => {
 
             <div className="forgot-password">Mot de passe oublier? <span>Cliquer ici! </span></div>
             <div className="submit-container">
-                <div className={action==="Login"?"submit gray":"submit"} onClick={()=>setAction("Sign Up")}>Sing Up</div>
                 <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>setAction("Login")}>Login</div>
             </div>
         </div>
