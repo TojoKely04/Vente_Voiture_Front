@@ -38,13 +38,13 @@ const ContentBoiteVitesse = () => {
 
     function remove(id) {
         axios.delete(`marque/${id}`)
-           .then(response => {
-             const newItems = groups.filter(group => group.idVitesse !== id);
-             setGroups(newItems);
-           })
-           .catch(error => {
-             console.error('Erreur lors de la suppression du post:', error);
-           });
+            .then(response => {
+                const newItems = groups.filter(group => group.idVitesse !== id);
+                setGroups(newItems);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la suppression du post:', error);
+            });
     }
 
     const groupList = groups.map(group => {

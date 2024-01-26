@@ -5,26 +5,27 @@ import Row from 'react-bootstrap/Row';
 import Header from '../header/header';
 import { Container , Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 const Liste = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-          const result = await fetch(`annonces`);
-          const body = await result.json();
-          setGroups(body);
-        }
-        fetchData();
-      }, []);
+      axios.get('annonces')
+      .then(response => {
+           setGroups(response.data);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des posts:', error);
+      });
+    }, []);
 
     const groupList = groups.map(group => {
         return <Container>
-        <Row xs={1} md={2} className="g-4" >
+          {/* md={3} */}
+        <Row xs={1}  >
           {Array.from({ length: 1 }).map((_, idx) => (
             <Col key={idx}>
-            {/* <div className='container'> */}
               <Card style={{ boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', transition: '0.3s' }}>
                 <Card.Img variant="top" src="holder.js/100px160" />
                 <Card.Body>
@@ -36,10 +37,8 @@ const Liste = () => {
                         <p>Auteur : {group.utilisateur.nom}</p>
                   </Card.Text>
                   <Button variant="primary" tag={Link} to={"/Detail/" + group.idAnnonce}>Plus de détails</Button>
-                  {/* <Card.Link href="/Detail/group.idAnnonce"></Card.Link> */}
                 </Card.Body>
               </Card>
-              {/* </div> */}
             </Col>
           ))}
         </Row>
