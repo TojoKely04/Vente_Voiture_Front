@@ -6,6 +6,7 @@ import Header from '../header/header';
 import { Container , Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import car from '../assets/image/car.jpg'
 
 const Liste = () => {
     const [groups, setGroups] = useState([]);
@@ -13,7 +14,7 @@ const Liste = () => {
     useEffect(() => {
       axios.get('annonces')
       .then(response => {
-           setGroups(response.data);
+          setGroups(response.data);
       })
       .catch(error => {
         console.error('Erreur lors de la récupération des posts:', error);
@@ -25,7 +26,7 @@ const Liste = () => {
           {Array.from({ length: 1 }).map((_, idx) => (
             <Col key={idx}>
               <Card style={{ boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', transition: '0.3s' }}>
-                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Img variant="top" src={car} />
                 <Card.Body>
                   <Card.Text>
                   <p>Nom : {group.nom}</p>
