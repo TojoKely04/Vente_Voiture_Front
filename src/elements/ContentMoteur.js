@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
@@ -49,11 +49,10 @@ const ContentMoteur = () => {
     }
 
 
-
     const groupList = groups.map(group => {
         return <tr>
             <td> {group.moteur}{console.log(group)}</td>
-            <td> <a href="#">Modifier</a> </td>
+            <td> <a href="/ModifMoteur/+{group.idMoteur}">Modifier</a> </td>
             <td> <button onClick={() => remove(group.idMoteur)}>Supprimer</button> </td>
         </tr>
         
