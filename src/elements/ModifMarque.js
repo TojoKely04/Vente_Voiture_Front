@@ -55,10 +55,10 @@ const ModifMarque = () => {
         <Header/>
             <Container>
             <Form>    
-            <div className="">
+            <div className="body--activity">
                 <h2 className="ajout--title"> Modifier marque </h2>
                 <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
-                <button type="submit" id="boutton">Modifier</button>
+                <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
 

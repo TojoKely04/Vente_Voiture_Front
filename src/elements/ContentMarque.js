@@ -50,7 +50,7 @@ const ContentMarque = () => {
     const groupList = groups.map(group => {
         return <tr>
             <td> {group.marque}{console.log(group)}</td>
-            <td> <a href="/ModifMarque">Modifier</a> </td>
+            <td> <a href={`/ModifMarque/${group.idMarque}`}> Modifier</a> </td>
             <td> <button onClick={() => remove(group.idMarque)}>Supprimer</button> </td>
         </tr>
         

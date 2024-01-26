@@ -59,10 +59,10 @@ const ModifCategorie = () => {
         <Header/>
         <Container>
             <Form onSubmit={onSubmit}>    
-            <div className="">
+            <div className="body--activity">
                 <h2 className="ajout--title"> Modifier categorie </h2>
                 <p> Catégories : <input type="text"  id="categorie" /> </p>
-                <button type="submit" id="boutton">Modifier</button>
+                <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
         </Container>

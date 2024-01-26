@@ -52,7 +52,7 @@ const ContentMoteur = () => {
     const groupList = groups.map(group => {
         return <tr>
             <td> {group.moteur}{console.log(group)}</td>
-            <td> <a href="/ModifMoteur/+{group.idMoteur}">Modifier</a> </td>
+            <td> <a href={`/ModifMoteur/${group.idMoteur}`}> Modifier</a> </td>
             <td> <button onClick={() => remove(group.idMoteur)}>Supprimer</button> </td>
         </tr>
         

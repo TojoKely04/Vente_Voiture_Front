@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/Content.css';
-import { Col, Row } from "reactstrap";
-import SideNavigation from "../header/SideBar";
 import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
@@ -59,9 +57,9 @@ const ModifBoiteVitesse = () => {
       <Container>
             <Form onSubmit={onSubmit}>    
             <div className="">
-                <h2 className="ajout--title"> Modifier vitesse </h2>
-                <p> Vitesse : <input type="text" id="vitesse" /> </p>
-                <button type="submit" id="boutton">Modifier</button>
+                <h2 className="ajout--title"> Modifier Boite de vitesse </h2>
+                <p> Boite : <input type="text" id="vitesse" /> </p>
+                <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
         </Container>

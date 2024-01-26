@@ -56,7 +56,7 @@ const ModifMoteur = () => {
         <div className="body--activity">
                 <h1 className="ajout--title"> Modifier moteur </h1>
                 <p> Moteur : <input type="text" name="InsertMoteur" id="" /> </p>
-                <button type="submit" id="boutton">Modifier</button>   
+                <button type="submit" id="boutton">Valider</button>   
             </div>
             </Container>
             </>

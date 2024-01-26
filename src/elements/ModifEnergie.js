@@ -58,10 +58,10 @@ const ModifEnergie = () => {
         <Header/> 
         <Container>
             <Form>    
-            <div className="">
+            <div className="body--activity">
                 <h2 className="ajout--title"> Modifier énérgie </h2>
                 <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
-                <button type="submit" id="boutton">Modifier</button>
+                <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
 
