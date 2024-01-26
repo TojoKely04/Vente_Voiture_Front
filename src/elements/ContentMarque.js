@@ -4,50 +4,48 @@ import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import './content.css'; 
-const ContentMarque = () => {
+import axios from 'axios';
 
-    const [groups , setGroups] = useState([]);
+const ContentMarque = () => {
+    const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-      async function fetchData() {
-        const result = await fetch('moteur');
-        const body = await result.json();
-        setGroups(body);
-      }
-      fetchData();
-    }, [])
+        axios.get('marque')
+           .then(response => {
+                setGroups(response.data);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la récupération des posts:', error);
+           });
+    }, []);
 
-    const onSubmit = async (event) => {
+    function addItem(newItem) {
+        axios.post('marque', { marque: newItem })
+           .then(response => {
+                setGroups([...groups, response.data]);
+           })
+           .catch(error => {
+             console.error('Erreur lors de l\'ajout du post:', error);
+           });
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const cat = form.elements.marque.value;
-        try{
-            const formData = {
-                "marque" : marque
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch('/marque' , {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            } );
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch('marque');
-                    const body = await result.json;
-                    setGroups(body);
-                }
-                fetchData();
-            }else{
-                console.error('Erreur lors de l\'insertion de l\'objet')
-            }
-        }catch(error){
-            alert('Erreur reseau :' , error);
-        }
-    };
+        const newItem = event.target.elements.marque.value;
+        addItem(newItem);
+        event.target.reset();
+    }
+
+    function remove(id) {
+        axios.delete(`marque/${id}`)
+           .then(response => {
+             const newItems = groups.filter(group => group.idMarque !== id);
+             setGroups(newItems);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la suppression du post:', error);
+           });
+    }
 
     const groupList = groups.map(group => {
         return <tr>
@@ -57,33 +55,16 @@ const ContentMarque = () => {
         </tr>
         
     });
-
-    const remove = async (id) => {
-        await fetch(`marque/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(() => {
-            async function fetchData() {
-                const result = await fetch(`marque`);
-                const body = await result.json();
-                setGroups(body);
-            }
-            fetchData();
-        });
-    }
-
+    
     return (
         <>
         <Header/>
             <Container>
             <div>
-            <Form>    
+            <Form onSubmit={handleSubmit}>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter marque </h2>
-                <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
+                <p> Marque : <input type="text" name="marque" id="" /> </p>
                 <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>
