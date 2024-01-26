@@ -12,7 +12,7 @@ const Liste = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-      axios.get('annonces')
+      axios.get('/annonces/nonLus')
       .then(response => {
           setGroups(response.data);
       })

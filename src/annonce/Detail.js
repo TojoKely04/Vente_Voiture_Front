@@ -28,14 +28,35 @@ function Detail(){
     const navigate = useNavigate();
 
     function refuser(id) {
-       axios.delete(`/annonces/${id}`)
+        const data = {
+            "annonces": {
+                "idAnnonce": id
+            }            
+        };
+       axios.post(`/annoncesRefuser`,data)
+       .then(response => {
+           navigate('/Annonce');
+       })
+       .catch(error => {
+         console.error('Erreur lors de la suppression du post:', error);
+       });
+    };
+
+    
+    function accepter(id) {
+        const data = {
+            "annonces": {
+                "idAnnonce": id
+            }            
+        };
+        axios.post('/annoncesAccepter',data)
         .then(response => {
             navigate('/Annonce');
         })
         .catch(error => {
-            console.error('Erreur lors de la suppression du post:', error);
+          console.error('Erreur lors de la suppression du post:', error);
         });
-    };
+     };
 
     
     
@@ -96,7 +117,7 @@ function Detail(){
                                     <Card.Title>Details De L'Annonce</Card.Title>
                                     {apropos()}
                                     <Card.Text>
-                                        <Button variant="success">Accepter</Button>{' '}
+                                        <Button variant="success" onClick={() => accepter(details.idAnnonce)}>Accepter</Button>{' '}
                                         <Button variant="danger" onClick={() => refuser(details.idAnnonce)}>Refuser</Button>{' '}
                                     </Card.Text>
                                 </Card.Body>
