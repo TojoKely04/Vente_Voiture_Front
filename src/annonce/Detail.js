@@ -23,7 +23,7 @@ function Detail(){
             {console.log(details)}
             <Header/>
             <Container>
-            <Row xs={1} md={1} className="g-4" >
+            <Row xs={1} md={1} className="md-4" >
             {Array.from({ length: 1 }).map((_, idx) => (
             <Col key={idx}>
                 <Card style={{ boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', transition: '0.3s' }}>

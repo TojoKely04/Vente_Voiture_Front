@@ -21,34 +21,34 @@ const Liste = () => {
     }, []);
 
     const groupList = groups.map(group => {
-        return <Container>
-          {/* md={3} */}
-        <Row xs={1}  >
+        return <>
           {Array.from({ length: 1 }).map((_, idx) => (
             <Col key={idx}>
               <Card style={{ boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', transition: '0.3s' }}>
                 <Card.Img variant="top" src="holder.js/100px160" />
                 <Card.Body>
                   <Card.Text>
-                        <p>Nom : {group.nom}</p>
-                        <p>Catégories : {group.categorie.categorie}</p>
-                        <p>Marque :{group.marque.marque}</p>
-                        <p>Date de publication :{group.datePublication}</p>
-                        <p>Auteur : {group.utilisateur.nom}</p>
+                  <p>Nom : {group.nom}</p>
+                  <p>Catégories : {group.categorie.categorie}</p>
+                  <p>Marque :{group.marque.marque}</p>
+                  <p>Date de publication :{group.datePublication}</p>
+                  <p>Auteur : {group.utilisateur.nom}</p>
                   </Card.Text>
                   <Button variant="primary" tag={Link} to={"/Detail/" + group.idAnnonce}>Plus de détails</Button>
-                </Card.Body>
+                  </Card.Body>
               </Card>
             </Col>
           ))}
-        </Row>
-        </Container>
-        
+        </>
     });
     return ( 
     <>    
       <Header/>
-      {groupList}
+      <Container  style={{marginLeft:'90px'}}>
+        <Row xs={1} md={3} className="g-4" >
+          {groupList}     
+        </Row>
+      </Container>
     </>
     );
 }
