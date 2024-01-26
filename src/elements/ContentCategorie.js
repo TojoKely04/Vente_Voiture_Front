@@ -5,54 +5,52 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'; 
 import Header from '../header/header';
 import './content.css'; 
-
+import axios from 'axios';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 
 const ContentCategorie = () => {
+
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-          const result = await fetch(`categorie`);
-          const body = await result.json();
-          setGroups(body);
-        }
-        fetchData();
-      }, []);
+        axios.get('categorie')
+           .then(response => {
+                setGroups(response.data);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la récupération des posts:', error);
+           });
+    }, []);
 
-    const onSubmit = async (event) => {
+    function addItem(newItem) {
+        axios.post('categorie', { categorie: newItem })
+           .then(response => {
+                setGroups([...groups, response.data]);
+           })
+           .catch(error => {
+             console.error('Erreur lors de l\'ajout du post:', error);
+           });
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const cat = form.elements.categorie.value;
-        try{
-            const formData = {
-                "categorie":cat
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch(`/categorie`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch(`categorie`);
-                    const body = await result.json();
-                    setGroups(body);
-                }
-                fetchData();
+        const newItem = event.target.elements.categorie.value;
+        addItem(newItem);
+        event.target.reset();
+    }
 
-            } else {
-                // La requête a échoué, gérer les erreurs si nécessaire
-                console.error('Erreur lors de l\'insertion de l\'objet');
-            }
-        } catch (error) {
-            alert('Erreur réseau :', error);
-        }
-    };
+    function remove(id) {
+        axios.delete(`categorie/${id}`)
+           .then(response => {
+             const newItems = groups.filter(group => group.idCategorie !== id);
+             setGroups(newItems);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la suppression du post:', error);
+           });
+    }
+
+
 
     const groupList = groups.map(group => {
         return <tr>
@@ -62,29 +60,13 @@ const ContentCategorie = () => {
         </tr>
         
     });
-
-    const remove = async (id) => {
-        await fetch(`categorie/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(() => {
-            async function fetchData() {
-                const result = await fetch(`categorie`);
-                const body = await result.json();
-                setGroups(body);
-            }
-            fetchData();
-        });
-    }
+    
     return (
         <>
         <Header/>
         <Container>
             <div>
-            <Form onSubmit={onSubmit}>    
+            <Form onSubmit={handleSubmit}>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter categorie </h2>
                 <p> Catégories : <input type="text"  id="categorie" /> </p>

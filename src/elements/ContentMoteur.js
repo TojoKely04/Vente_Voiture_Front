@@ -1,53 +1,53 @@
 import React, { useEffect, useState } from "react";
-
 import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import './content.css'; 
+import axios from 'axios';
+import Table from 'react-bootstrap/Table';
+
 const ContentMoteur = () => {
 
-    const [groups , setGroups] = useState([]);
+    const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-      async function fetchData() {
-        const result = await fetch('moteur');
-        const body = await result.json();
-        setGroups(body);
-      }
-      fetchData();
-    }, [])
+        axios.get('moteur')
+           .then(response => {
+                setGroups(response.data);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la récupération des posts:', error);
+           });
+    }, []);
 
-    const onSubmit = async (event) => {
+    function addItem(newItem) {
+        axios.post('moteur', { moteur: newItem })
+           .then(response => {
+                setGroups([...groups, response.data]);
+           })
+           .catch(error => {
+             console.error('Erreur lors de l\'ajout du post:', error);
+           });
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const moteur = form.elements.moteur.value;
-        try{
-            const formData = {
-                "moteur" : moteur
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch('/moteur' , {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            } );
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch('moteur');
-                    const body = await result.json;
-                    setGroups(body);
-                }
-                fetchData();
-            }else{
-                console.error('Erreur lors de l\'insertion de l\'objet')
-            }
-        }catch(error){
-            alert('Erreur reseau :' , error);
-        }
-    };
+        const newItem = event.target.elements.moteur.value;
+        addItem(newItem);
+        event.target.reset();
+    }
+
+    function remove(id) {
+        axios.delete(`moteur/${id}`)
+           .then(response => {
+             const newItems = groups.filter(group => group.idMoteur !== id);
+             setGroups(newItems);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la suppression du post:', error);
+           });
+    }
+
 
     const groupList = groups.map(group => {
         return <tr>
@@ -58,49 +58,44 @@ const ContentMoteur = () => {
         
     });
 
-    const remove = async (id) => {
-        await fetch(`moteur/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(() => {
-            async function fetchData() {
-                const result = await fetch(`moteur`);
-                const body = await result.json();
-                setGroups(body);
-            }
-            fetchData();
-        });
-    }
 
     return (
         <>
-        <Header/>
+        <Header/> 
         <Container>
-        <div className="body--activity">
+            <div>
+            <Form onSubmit={handleSubmit}>    
             <div className="">
-                <h1 className="ajout--title"> Ajouter moteur </h1>
-                <p> Moteur : <input type="text" name="InsertMoteur" id="" /> </p>
+                <h2 className="ajout--title"> Ajouter Moteur </h2>
+                <p> Enérgies : <input type="text" name="moteur" id="" /> </p>
                 <button type="submit" id="boutton">Ajouter</button>
             </div>
+            </Form>
 
             <div className="">
-            <h1 className="list--title">  Liste Moteur </h1>
-                <table>
+            <h2 className="list--title">  Liste Moteur </h2>
+                <Table striped bordered hover>
+                    <thead>
                     <tr>
                         <td> Nom </td>
                         <td> Action </td>
                     </tr>
+                    </thead>
+                    <tbody>
+                    {/* <tr>
+                        <td> Diesel</td>
+                        <td> <a href="#">Modifier</a> </td>
+                        <td> <a href="#">Supprimer</a> </td>
+                    </tr> */}
                     {groupList}
-                </table>  
+                    </tbody>
+                </Table>  
+            </div> 
             </div>
-                
-            </div>
-            </Container>
-            </>
-    )
+        </Container>
+        </>
+    );
+
 }
 
 export default ContentMoteur;

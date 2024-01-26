@@ -6,57 +6,104 @@ import Row from 'react-bootstrap/Row';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
 import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import car from '../assets/image/car.jpg'
 
 // Get ID from URL
 function Detail(){
-    var {id} = useParams();
-    console.log(id);
-    const [annonce, setAnnonce] = useState([]);
+    const [details, setDetails] = useState({});
 
-    useEffect((id) => {
-        fetch('/annonces/'+id)
-          .then(response => response.json())
-          .then(data => setAnnonce(data));
-          console.log(annonce);
-      }, []);
-      
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get(`/annonces/${id}`);
+            setDetails(result.data);
+            console.log(result.data);
+            console.log(details);
+        };
+        fetchData();
+    }, []);
+
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    function refuser(id) {
+       axios.delete(`/annonces/${id}`)
+        .then(response => {
+            navigate('/Annonce');
+        })
+        .catch(error => {
+            console.error('Erreur lors de la suppression du post:', error);
+        });
+    };
+
+    
+    
+
+    const apropos = () => {
+        return <>
+            <Card.Text>
+                <p>Nom : {details.nom}</p>
+            </Card.Text>
+            {/* <Card.Text>
+                <p>Date de publication : {details.datePublication}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>Catégories : {details.categorie.categorie} </p> 
+            </Card.Text>
+            <Card.Text>
+                <p>Marque : {details.marque.marque}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>Couleur : {details.couleur}</p>
+            </Card.Text>
+            <Card.Text>
+                    <p>Moteur : {details.moteur.moteur}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>Kilometrage : {details.anneeSortie}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>Année de sortie : {details.anneeSortie}</p>
+            </Card.Text>
+            <Card.Text>
+                    <p>Vitesse : {details.boiteVitesse.vitesse}</p>
+            </Card.Text>
+            <Card.Text>
+                    <p>Enérgie : {details.energie.energie}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>Prix de vente : {details.prix}</p>
+            </Card.Text> 
+            <Card.Text>
+                    <p>Auteur: {details.utilisateur.nom}</p>
+            </Card.Text> */}
+        </>
+    };
+
     return(
         <div>
+            {console.log(details.categorie)}
             <Header/>
-            <Container>
-            <Row xs={1} md={1} className="g-4" >
-            {Array.from({ length: 1 }).map((_, idx) => (
-            <Col key={idx}>
-                <Card style={{ boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', transition: '0.3s' }}>
-                <div style={{float:'left'}}>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                </div>
-                
-                <div style={{float:'left'}} >
-                <Card.Body>
-                <Card.Text>
-                {/* <p>Nom : {annonce.nom}</p>
-                <p>Catégories : {annonce.categorie.categorie} </p>
-                <p>Marque : {annonce.marque.marque}</p>
-                <p>Date de publication : {annonce.datePublication}</p>
-                <p>Couleur : {annonce.couleur}</p>
-                <p>Moteur : {annonce.moteur.moteur}</p>
-                <p>Kilometrage : {annonce.anneeSortie}</p>
-                <p>Année de sortie : {annonce.anneeSortie}</p>
-                <p>Vitesse : {annonce.boiteVitesse.vitesse}</p>
-                <p>Enérgie : {annonce.energie.energie}</p>
-                <p>Prix de vente : {annonce.prix}</p>
-                <p>Auteur: {annonce.utilisateur.nom}</p> */}
-                    <Button variant="success">Accepter</Button>{' '}
-                    <Button variant="danger">Refuser</Button>{' '}
-                </Card.Text>
-                </Card.Body>
-                </div>
-                </Card>
-            </Col>
-            ))}
-            </Row>
-            </Container>
+                <Container>
+                    <Card className="horizontal-card">
+                        <Row noGutters>
+                            <Col md={4}>
+                                <Card.Img src={car} alt="Card image"/>
+                            </Col>
+                            <Col md={8}>
+                                <Card.Body>
+                                    <Card.Title>Details De L'Annonce</Card.Title>
+                                    {apropos()}
+                                    <Card.Text>
+                                        <Button variant="success">Accepter</Button>{' '}
+                                        <Button variant="danger" onClick={() => refuser(details.idAnnonce)}>Refuser</Button>{' '}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Col>
+                        </Row>
+                    </Card>
+                </Container>
         </div>
     );
 };

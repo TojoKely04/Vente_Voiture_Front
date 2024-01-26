@@ -3,55 +3,53 @@ import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
-
+import axios from 'axios';
 import './content.css';
 
 
 const ContentEnergie = () => {
     
-    const [groups , setGroups] = useState([]);
+    const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-          const result = await fetch(`energie`);
-          const body = await result.json();
-          setGroups(body);
-        }
-        fetchData();
-      }, []);
+        axios.get('energie')
+           .then(response => {
+                setGroups(response.data);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la récupération des posts:', error);
+           });
+    }, []);
 
-    const onSubmit = async (event) => {
+    function addItem(newItem) {
+        axios.post('energie', { energie: newItem })
+           .then(response => {
+                setGroups([...groups, response.data]);
+           })
+           .catch(error => {
+             console.error('Erreur lors de l\'ajout du post:', error);
+           });
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const energie = form.elements.energie.value;
-        try{
-            const formData = {
-                "energie" : energie
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch('/energie' , {
-                method: 'POST',
-                headers: {
-                    'Accept' : 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            } ); 
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch('energie');
-                    const body = await result.json;
-                    setGroups(body);
-                }
-                fetchData();
-            } else {
-                // La requête a échoué, gérer les erreurs si nécessaire
-                console.error('Erreur lors de l\'insertion de l\'objet');
-            }
-            }catch(error) {
-                alert('Erreur reseau :' , error);
-            }
-        };
+        const newItem = event.target.elements.energie.value;
+        addItem(newItem);
+        event.target.reset();
+    }
+
+    function remove(id) {
+        axios.delete(`marque/${id}`)
+           .then(response => {
+             const newItems = groups.filter(group => group.idEnergie !== id);
+             setGroups(newItems);
+           })
+           .catch(error => {
+             console.error('Erreur lors de la suppression du post:', error);
+           });
+    }
+
+
 
         const groupList = groups.map(group => {
             return <tr>
@@ -62,32 +60,16 @@ const ContentEnergie = () => {
             
         });
 
-        const remove = async (id) => {
-            await fetch(`energie/${id}`, {
-              method: 'DELETE',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
-            }).then(() => {
-                async function fetchData() {
-                    const result = await fetch(`energie`);
-                    const body = await result.json();
-                    setGroups(body);
-                }
-                fetchData();
-            });
-    }
 
     return (
         <>
         <Header/> 
         <Container>
             <div>
-            <Form>    
+            <Form onSubmit={handleSubmit}>    
             <div className="">
                 <h2 className="ajout--title"> Ajouter énérgie </h2>
-                <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
+                <p> Enérgies : <input type="text" name="energie" id="" /> </p>
                 <button type="submit" id="boutton">Ajouter</button>
             </div>
             </Form>

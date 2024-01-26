@@ -14,6 +14,7 @@ const Example = ({ active, onSelect, ...props }) => {
          <Nav.Item eventKey="5"><Link to="/Marque" style={{textDecoration:'none'}}>Marque</Link></Nav.Item>
          <Nav.Item eventKey="6"><Link to="/Energie" style={{textDecoration:'none'}}>Energie</Link></Nav.Item>
          <Nav.Item eventKey="7"><Link to="/Vitesse"  style={{textDecoration:'none'}}>Vitesse</Link></Nav.Item>
+         <Nav.Item eventKey="7"><Link to="/Moteur"  style={{textDecoration:'none'}}>Moteur</Link></Nav.Item>
        </Nav.Menu>
        <Nav.Menu title="Statistiques">
          <Nav.Item eventKey="4"><Link to="/Statistique/Date"  style={{textDecoration:'none'}}>Par Rapport au date</Link></Nav.Item>
