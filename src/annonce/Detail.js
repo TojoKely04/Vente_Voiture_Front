@@ -35,7 +35,7 @@ function Detail(){
                 <Card.Body>
                 <Card.Text>
                 <p>Nom : {details.nom}</p>
-                <p>Catégories : {details.categorie.categorie} </p>
+                {/* <p>Catégories : {details.categorie.categorie} </p>
                 <p>Marque : {details.marque.marque}</p>
                 <p>Date de publication : {details.datePublication}</p>
                 <p>Couleur : {details.couleur}</p>
@@ -45,7 +45,7 @@ function Detail(){
                 <p>Vitesse : {details.boiteVitesse.vitesse}</p>
                 <p>Enérgie : {details.energie.energie}</p>
                 <p>Prix de vente : {details.prix}</p>
-                <p>Auteur: {details.utilisateur.nom}</p>
+                <p>Auteur: {details.utilisateur.nom}</p> */}
                     <Button variant="success">Accepter</Button>{' '}
                     <Button variant="danger">Refuser</Button>{' '}
                 </Card.Text>
