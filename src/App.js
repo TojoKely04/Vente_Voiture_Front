@@ -16,6 +16,11 @@ import Header from "./header/header";
 // import SideNavigation from "./header/SideBar";
 import Sidebar from './header/headerFront';
 import Annonce from './annonce/AnnonceFront';
+import ModifCategorie from './elements/ModifCategorie';
+import ModifEnergie from './elements/ModifEnergie';
+import ModifMarque from './elements/ModifMarque';
+import ModifBoiteVitesse from './elements/ModifBoiteVitesse';
+import ModifMoteur from './elements/ModifMoteur';
 
 function App(){
   const styles = {
@@ -43,6 +48,12 @@ function App(){
           <Route path="/Vitesse" element={<BoiteVitesse/>} />
           <Route path="/Moteur" element={<Moteur/>} />
           <Route path ="/Statistique" element={<Statistque/>}/>
+          <Route path="/ModifCategorie" element={<ModifCategorie/>} />
+          <Route path="/ModifEnergie" element={<ModifEnergie/>} />
+          <Route path="/ModifMarque" element={<ModifMarque/>} />
+          <Route path="/ModifBoiteVitesse" element={<ModifBoiteVitesse/>} />
+          <Route path="/ModifMoteur" element={<ModifMoteur/>} />
+
       </Routes>
     </Router>
     </div>

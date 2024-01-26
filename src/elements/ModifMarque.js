@@ -4,7 +4,8 @@ import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import './content.css'; 
-const ContentMarque = () => {
+
+const ModifMarque = () => {
 
     const [groups , setGroups] = useState([]);
 
@@ -42,75 +43,29 @@ const ContentMarque = () => {
                 }
                 fetchData();
             }else{
-                console.error('Erreur lors de l\'insertion de l\'objet')
+                console.error('Erreur lors de la modification de l\'objet')
             }
         }catch(error){
             alert('Erreur reseau :' , error);
         }
     };
 
-    const groupList = groups.map(group => {
-        return <tr>
-            <td> {group.marque}{console.log(group)}</td>
-            <td> <a href="/ModifMarque">Modifier</a> </td>
-            <td> <button onClick={() => remove(group.idMarque)}>Supprimer</button> </td>
-        </tr>
-        
-    });
-
-    const remove = async (id) => {
-        await fetch(`marque/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(() => {
-            async function fetchData() {
-                const result = await fetch(`marque`);
-                const body = await result.json();
-                setGroups(body);
-            }
-            fetchData();
-        });
-    }
-
     return (
         <>
         <Header/>
             <Container>
-            <div>
             <Form>    
             <div className="">
-                <h2 className="ajout--title"> Ajouter marque </h2>
+                <h2 className="ajout--title"> Modifier marque </h2>
                 <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
-                <button type="submit" id="boutton">Ajouter</button>
+                <button type="submit" id="boutton">Modifier</button>
             </div>
             </Form>
 
-            <div className="">
-            <h2 className="list--title">  Liste Marques </h2>
-                <Table striped bordered hover>
-                    <thead>
-                    <tr>
-                        <td> Nom </td>
-                        <td> Action </td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {/* <tr>
-                        <td> Audi </td>
-                        <td> <a href="#">Modifier</a> </td>
-                        <td> <a href="#">Supprimer</a> </td>
-                    </tr> */}
-                    {groupList}
-                    </tbody>
-                </Table>  
-            </div> 
-            </div>
+           
         </Container>
         </>
     )
 }
 
-export default ContentMarque;
+export default ModifMarque;

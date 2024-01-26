@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import './content.css';
 
 
-const ContentEnergie = () => {
+const ModifEnergie = () => {
     
     const [groups , setGroups] = useState([]);
 
@@ -46,76 +46,29 @@ const ContentEnergie = () => {
                 fetchData();
             } else {
                 // La requête a échoué, gérer les erreurs si nécessaire
-                console.error('Erreur lors de l\'insertion de l\'objet');
+                console.error('Erreur lors de la modification de l\'objet')
             }
             }catch(error) {
                 alert('Erreur reseau :' , error);
             }
         };
 
-        const groupList = groups.map(group => {
-            return <tr>
-                <td> {group.categorie}{console.log(group)}</td>
-                <td> <a href="/ModifEnergie">Modifier</a> </td>
-                <td> <button onClick={() => remove(group.idCategorie)}>Supprimer</button> </td>
-            </tr>
-            
-        });
-
-        const remove = async (id) => {
-            await fetch(`energie/${id}`, {
-              method: 'DELETE',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
-            }).then(() => {
-                async function fetchData() {
-                    const result = await fetch(`energie`);
-                    const body = await result.json();
-                    setGroups(body);
-                }
-                fetchData();
-            });
-    }
-
     return (
         <>
         <Header/> 
         <Container>
-            <div>
             <Form>    
             <div className="">
-                <h2 className="ajout--title"> Ajouter énérgie </h2>
+                <h2 className="ajout--title"> Modifier énérgie </h2>
                 <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
-                <button type="submit" id="boutton">Ajouter</button>
+                <button type="submit" id="boutton">Modifier</button>
             </div>
             </Form>
 
-            <div className="">
-            <h2 className="list--title">  Liste Energie </h2>
-                <Table striped bordered hover>
-                    <thead>
-                    <tr>
-                        <td> Nom </td>
-                        <td> Action </td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {/* <tr>
-                        <td> Diesel</td>
-                        <td> <a href="#">Modifier</a> </td>
-                        <td> <a href="#">Supprimer</a> </td>
-                    </tr> */}
-                    {groupList}
-                    </tbody>
-                </Table>  
-            </div> 
-            </div>
         </Container>
         </>
     );
 
 }    
 
-export default ContentEnergie;
+export default ModifEnergie;
