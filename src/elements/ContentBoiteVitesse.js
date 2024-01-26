@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../assets/Content.css';
-import { Col, Row } from "reactstrap";
-import SideNavigation from "../header/SideBar2";
 import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';

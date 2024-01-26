@@ -10,12 +10,6 @@ import Energie from './elements/ContentEnergie';
 import Marque from './elements/ContentMarque';
 import BoiteVitesse from './elements/ContentBoiteVitesse';
 import Statistque from './statistique/Statistiques';
-import SideBar from './header/SideBar2';
-import { Col, Row } from "reactstrap";
-import Header from "./header/header";
-// import SideNavigation from "./header/SideBar";
-import Sidebar from './header/headerFront';
-import Annonce from './annonce/AnnonceFront';
 
 function App(){
   const styles = {
