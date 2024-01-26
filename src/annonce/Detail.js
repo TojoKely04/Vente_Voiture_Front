@@ -7,9 +7,24 @@ import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container } from 'reactstrap';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 // Get ID from URL
 function Detail(){
     const { id } = useParams();
+    const navigate = useNavigate();
+
+    function refuser(id) {
+       axios.delete(`/annonces/${id}`)
+       .then(response => {
+           navigate('/Annonce');
+       })
+       .catch(error => {
+         console.error('Erreur lors de la suppression du post:', error);
+       });
+    };
+
+    
     const [details, setDetails] = useState({});
 
     useEffect(() => {
@@ -47,7 +62,7 @@ function Detail(){
                 <p>Prix de vente : {details.prix}</p>
                 <p>Auteur: {details.utilisateur.nom}</p> */}
                     <Button variant="success">Accepter</Button>{' '}
-                    <Button variant="danger">Refuser</Button>{' '}
+                    <Button variant="danger" onClick={() => refuser(details.idAnnonce)}>Refuser</Button>{' '}
                 </Card.Text>
                 </Card.Body>
                 </div>
