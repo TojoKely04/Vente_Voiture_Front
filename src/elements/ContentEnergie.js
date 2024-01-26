@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import '../assets/Content.css';
 import Header from '../header/header';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
 
 import './content.css';
-import { setgroups } from "process";
 
 
 const ContentEnergie = () => {
@@ -24,7 +23,7 @@ const ContentEnergie = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
-        const cat = form.elements.energie.value;
+        const energie = form.elements.energie.value;
         try{
             const formData = {
                 "energie" : energie
@@ -42,7 +41,7 @@ const ContentEnergie = () => {
                 async function fetchData() {
                     const result = await fetch('energie');
                     const body = await result.json;
-                    setgroups(body);
+                    setGroups(body);
                 }
                 fetchData();
             } else {
