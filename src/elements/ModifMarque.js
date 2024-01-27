@@ -4,6 +4,8 @@ import Header from '../header/header';
 import Table from 'react-bootstrap/Table';
 import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import './content.css'; 
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const ModifMarque = () => {
 
@@ -18,46 +20,34 @@ const ModifMarque = () => {
       fetchData();
     }, [])
 
-    const onSubmit = async (event) => {
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    function update(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const marque = form.elements.marque.value;
-        try{
-            const formData = {
-                "marque" : marque
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch('/marque' , {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            } );
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch('marque');
-                    const body = await result.json;
-                    setGroups(body);
-                }
-                fetchData();
-            }else{
-                console.error('Erreur lors de la modification de l\'objet')
-            }
-        }catch(error){
-            alert('Erreur reseau :' , error);
+        const newItem  = event.target.elements.marque.value;
+        const data = {
+            "idMarque": id,
+            "marque" : newItem
         }
-    };
+        axios.put('/marque' , data)
+        .then((response)=>{
+            navigate('/marque');
+        })
+        .catch(error =>{
+            console.error('Erreur lors de la modification :' , error);
+        });
+        event.target.reset();
+    }
 
     return (
         <>
         <Header/>
             <Container>
-            <Form>    
+            <Form onSubmit={update}>    
             <div className="body--activity">
                 <h2 className="ajout--title"> Modifier marque </h2>
-                <p> Marque : <input type="text" name="InsertMarque" id="" /> </p>
+                <p> Marque : <input type="text" name="marque" id="" /> </p>
                 <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
