@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../assets/Content.css';
-import Table from 'react-bootstrap/Table';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row'; 
+import '../assets/Content.css'; 
+import axios from 'axios';
+import { useParams , useNavigate} from 'react-router';
 import Header from '../header/header';
 import './content.css'; 
 
@@ -20,45 +19,32 @@ const ModifCategorie = () => {
         fetchData();
       }, []);
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const cat = form.elements.categorie.value;
-        try{
-            const formData = {
-                "categorie":cat
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch(`/categorie`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch(`categorie`);
-                    const body = await result.json();
-                    setGroups(body);
-                }
-                fetchData();
+      const {id} = useParams();
+      const navigate = useNavigate();
 
-            } else {
-                // La requête a échoué, gérer les erreurs si nécessaire
-                console.error('Erreur lors de la modification de l\'objet')
-            }
-        } catch (error) {
-            alert('Erreur réseau :', error);
+      function update(event){
+        event.preventDefault();
+        const newItem = event.target.elements.categorie.value;
+        const data = {
+            "idCategorie": id, 
+            "categorie": newItem
         }
-    };
+        axios.put(`/categorie`, data)
+        .then(response => {
+
+            navigate('/categorie');
+        })
+        .catch(error => {
+            console.error('Erreur lors de la suppression du post:', error);
+        });
+        event.target.reset();
+    }
     
     return (
         <>
         <Header/>
         <Container>
-            <Form onSubmit={onSubmit}>    
+            <Form onSubmit={update}>    
             <div className="body--activity">
                 <h2 className="ajout--title"> Modifier categorie </h2>
                 <p> Catégories : <input type="text"  id="categorie" /> </p>

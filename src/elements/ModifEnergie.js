@@ -5,6 +5,8 @@ import { Label , Input, Form, FormGroup, Container , Button } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
 
 import './content.css';
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 
 const ModifEnergie = () => {
@@ -20,47 +22,34 @@ const ModifEnergie = () => {
         fetchData();
       }, []);
 
-    const onSubmit = async (event) => {
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    function update(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const energie = form.elements.energie.value;
-        try{
-            const formData = {
-                "energie" : energie
-            };
-            console.log(JSON.stringify(formData));
-            const response = await fetch('/energie' , {
-                method: 'POST',
-                headers: {
-                    'Accept' : 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            } ); 
-            if (response.ok) {
-                async function fetchData() {
-                    const result = await fetch('energie');
-                    const body = await result.json;
-                    setGroups(body);
-                }
-                fetchData();
-            } else {
-                // La requête a échoué, gérer les erreurs si nécessaire
-                console.error('Erreur lors de la modification de l\'objet')
-            }
-            }catch(error) {
-                alert('Erreur reseau :' , error);
-            }
-        };
+        const newItem = event.target.elements.energie.value;
+        const data = {
+            "idEnergie":id,
+            "energie": newItem
+        }
+        axios.put(`/energie` , data)
+        .then((response)=>{
+            navigate('/energie');
+        })
+        .catch(error => {
+            console.error('Erreur lors de la modification :' , error);
+        });
+        event.target.reset();
+    }
 
     return (
         <>
         <Header/> 
         <Container>
-            <Form>    
+            <Form onSubmit={update}>    
             <div className="body--activity">
                 <h2 className="ajout--title"> Modifier énérgie </h2>
-                <p> Enérgies : <input type="text" name="InsertEnergie" id="" /> </p>
+                <p> Enérgies : <input type="text" name="energie" id="" /> </p>
                 <button type="submit" id="boutton">Valider</button>
             </div>
             </Form>
