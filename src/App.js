@@ -10,6 +10,9 @@ import Energie from './elements/ContentEnergie';
 import Marque from './elements/ContentMarque';
 import BoiteVitesse from './elements/ContentBoiteVitesse';
 import Statistque from './statistique/Statistiques';
+import StatistiqueDate from './statistique/StatistiqueDate';
+import StatistiquePrix from './statistique/StatistiquePrix';
+import StatistiqueMarque from './statistique/StatistiqueMarque';
 import Login from './login/LoginSingUp';
 
 function App(){
@@ -38,6 +41,11 @@ function App(){
           <Route path="/Vitesse" element={<BoiteVitesse/>} />
           <Route path="/Moteur" element={<Moteur/>} />
           <Route path ="/Statistique" element={<Statistque/>}/>
+          <Route path ="/Statistique/Date" element={<StatistiqueDate />}/>
+          <Route path ="/Statistique/Prix" element={<StatistiquePrix />}/>
+          <Route path ="/Statistique/Marque" element={<StatistiqueMarque />}/>
+          
+
       </Routes>
     </Router>
     </div>
