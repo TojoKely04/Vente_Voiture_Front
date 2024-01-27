@@ -15,7 +15,7 @@ body{
 
 .container{
   margin-top: 30px;
-  float: left;
+  /* float: left; */
   
   /* display: flex; */
   /* margin: auto; */
