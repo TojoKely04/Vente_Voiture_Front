@@ -137,7 +137,9 @@ function Detail(){
                                     {apropos()}
                                     <Card.Text>
                                         <div>
-                                        <input type="text"
+                                        <input
+                                            placeholder='Commission'
+                                            type="text"
                                             value={commission}
                                             onChange={handleInputChange}
                                             id="commission"/>
