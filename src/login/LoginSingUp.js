@@ -48,12 +48,12 @@ const LoginSingUp = () => {
                     <div className="inputs">
                         <div className="input">
                             <img src={email_icon} alt="" />
-                            <input type="email" placeholder='Email' className="input" id="email" />
+                            <input value="ok@gmail.com" type="email" placeholder='Email' className="input" id="email" />
                         </div>
 
                         <div className="input">
                             <img src={password_icon} alt="" />
-                            <input type="password" placeholder='Password' className="input" id="password" />
+                            <input value="Test" type="password" placeholder='Password' className="input" id="password" />
                         </div>
                     </div>
 
