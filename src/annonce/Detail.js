@@ -12,19 +12,34 @@ import car from '../assets/image/car.jpg'
 
 // Get ID from URL
 function Detail(){
-    const [details, setDetails] = useState({});
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios.get(`/annonces/${id}`);
-            setDetails(result.data);
-            console.log(result.data);
-            console.log(details);
-        };
-        fetchData();
-    }, []);
+    const [details, setDetails] = useState([]);
+    const[cat,setCat] = useState([]);
+    const[user,setUser] = useState([]);
+    const[energie,setEnergie] = useState([]);
+    const[vitesse,setVitesse] = useState([]);
+    const[moteur,setMoteur] = useState([]);
+    const[marque,setMarque] = useState([]);
 
     const { id } = useParams();
+
+    useEffect(() => {
+        axios.get(`/annonces/${id}`)
+        .then(response => {
+            const donnee = response.data
+            setDetails(donnee);
+            setCat(donnee.categorie);
+            setUser(donnee.utilisateur);
+            setEnergie(donnee.energie.energie);
+            setMarque(donnee.marque.marque);
+            setMoteur(donnee.moteur.moteur);
+            setVitesse(donnee.boiteVitesse.vitesse);
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des posts:', error);
+        });
+    }, []);
+
+
     const navigate = useNavigate();
 
     function refuser(id) {
@@ -66,39 +81,39 @@ function Detail(){
             <Card.Text>
                 <p>Nom : {details.nom}</p>
             </Card.Text>
-            {/* <Card.Text>
+             <Card.Text>
                 <p>Date de publication : {details.datePublication}</p>
             </Card.Text>
             <Card.Text>
-                <p>Catégories : {details.categorie.categorie} </p> 
+                <p>Catégories : {cat.categorie} </p> 
             </Card.Text>
-            <Card.Text>
-                <p>Marque : {details.marque.marque}</p>
+           <Card.Text>
+                <p>Marque : {marque.marque}</p>
             </Card.Text>
             <Card.Text>
                 <p>Couleur : {details.couleur}</p>
             </Card.Text>
             <Card.Text>
-                    <p>Moteur : {details.moteur.moteur}</p>
+                    <p>Moteur : {moteur.moteur}</p>
             </Card.Text>
             <Card.Text>
-                <p>Kilometrage : {details.anneeSortie}</p>
+                <p>Kilometrage : {details.kilometrage}</p>
             </Card.Text>
             <Card.Text>
                 <p>Année de sortie : {details.anneeSortie}</p>
             </Card.Text>
             <Card.Text>
-                    <p>Vitesse : {details.boiteVitesse.vitesse}</p>
+                    <p>Vitesse : {vitesse.vitesse}</p>
             </Card.Text>
             <Card.Text>
-                    <p>Enérgie : {details.energie.energie}</p>
+                    <p>Enérgie : {energie.energie}</p>
             </Card.Text>
             <Card.Text>
                 <p>Prix de vente : {details.prix}</p>
             </Card.Text> 
             <Card.Text>
-                    <p>Auteur: {details.utilisateur.nom}</p>
-            </Card.Text> */}
+                    <p>Auteur: {user.nom}</p>
+            </Card.Text>
         </>
     };
 
