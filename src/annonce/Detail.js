@@ -61,7 +61,6 @@ function Detail(){
     function accepter(event,id) {
         event.preventDefault();
         const newItem = event.target.elements.commission.value;
-        addItem(newItem);
         const data = {
             "annonces": {
                 "idAnnonce": id
