@@ -9,7 +9,6 @@ import Moteur from './elements/ContentMoteur';
 import Energie from './elements/ContentEnergie';
 import Marque from './elements/ContentMarque';
 import BoiteVitesse from './elements/ContentBoiteVitesse';
-import Statistque from './statistique/Statistiques';
 import StatistiqueDate from './statistique/StatistiqueDate';
 import StatistiquePrix from './statistique/StatistiquePrix';
 import StatistiqueMarque from './statistique/StatistiqueMarque';
