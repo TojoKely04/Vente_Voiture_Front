@@ -12,6 +12,12 @@ import car from '../assets/image/car.jpg'
 
 // Get ID from URL
 function Detail(){
+    const [commission, setCommission] = useState('');
+    const handleInputChange = (event) => {
+        setCommission(event.target.value);
+    };
+
+
     const [details, setDetails] = useState([]);
     const[cat,setCat] = useState([]);
     const[user,setUser] = useState([]);
@@ -61,8 +67,9 @@ function Detail(){
     function accepter(id) {
         const data = {
             "annonces": {
-                "idAnnonce": id
-            }            
+                "idAnnonce": id,
+            },
+            "commission": commission
         };
         axios.post('https://ventevoitureback-production.up.railway.app/annoncesAccepter',data)
         .then(response => {
@@ -72,9 +79,6 @@ function Detail(){
           console.error('Erreur lors de la suppression du post:', error);
         });
      };
-
-    
-    
 
     const apropos = () => {
         return <>
@@ -132,6 +136,12 @@ function Detail(){
                                     <Card.Title>Details De L'Annonce</Card.Title>
                                     {apropos()}
                                     <Card.Text>
+                                        <div>
+                                        <input type="text"
+                                            value={commission}
+                                            onChange={handleInputChange}
+                                            id="commission"/>
+                                        </div>
                                         <Button variant="success" onClick={() => accepter(details.idAnnonce)}>Accepter</Button>{' '}
                                         <Button variant="danger" onClick={() => refuser(details.idAnnonce)}>Refuser</Button>{' '}
                                     </Card.Text>
