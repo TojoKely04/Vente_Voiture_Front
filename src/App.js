@@ -18,6 +18,7 @@ import ModifMarque from './elements/ModifMarque';
 import ModifBoiteVitesse from './elements/ModifBoiteVitesse';
 import ModifMoteur from './elements/ModifMoteur';
 import Login from './login/LoginSingUp';
+import PrivateRoute from './login/PrivateRoute ';
 
 function App(){
   const styles = {
@@ -35,7 +36,8 @@ function App(){
     <div style={styles.contentMargin}>
     <Router>
       <Routes>
-          <Route exact path="/" element= {<Login/>} />
+      <Route element={<PrivateRoute/>}>
+          <Route path="/" element= {<Liste/>} />
           <Route path="/Annonce" element= {<Liste/>} />
           <Route path ="/Detail/:id" element={<Detail/>}/>
 
@@ -52,6 +54,8 @@ function App(){
           <Route path="/ModifMarque/:id" element={<ModifMarque/>} />
           <Route path="/ModifBoiteVitesse/:id" element={<ModifBoiteVitesse/>} />
           <Route path="/ModifMoteur/:id" element={<ModifMoteur/>} />
+      </Route>
+      <Route exact path="/Login" element= {<Login/>} />
       </Routes>
     </Router>
     </div>

@@ -31,8 +31,7 @@ const ModifCategorie = () => {
         }
         axios.put(`https://ventevoitureback-production.up.railway.app/categorie`, data)
         .then(response => {
-
-            navigate('https://ventevoitureback-production.up.railway.app/categorie');
+            navigate('/Categorie');
         })
         .catch(error => {
             console.error('Erreur lors de la suppression du post:', error);

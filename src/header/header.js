@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import { Navbar, Nav } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Example = ({ active, onSelect, ...props }) => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem('token');
+    navigate("/Login");
+   }
   return (
+    
    <Navbar {...props} >
      <Nav onSelect={onSelect} activeKey={active}>
        <Nav.Item eventKey="accueil"><Link to="/Annonce"  style={{textDecoration:'none'}}>Annonces</Link></Nav.Item>
@@ -21,6 +27,9 @@ const Example = ({ active, onSelect, ...props }) => {
          <Nav.Item eventKey="5"><Link to="/Statistique/Marque" style={{textDecoration:'none'}}>Par rapport au marque</Link></Nav.Item>
          <Nav.Item eventKey="6"><Link to="/Statistique/Prix" style={{textDecoration:'none'}}>par rapport au prix</Link></Nav.Item>
        </Nav.Menu>
+     </Nav>
+     <Nav className="">
+        <Nav.Item onClick={logout}>Déconnexion</Nav.Item>
      </Nav>
    </Navbar>
   );

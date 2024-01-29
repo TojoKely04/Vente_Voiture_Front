@@ -42,13 +42,15 @@ const ModifBoiteVitesse = () => {
       <>
       <Header/>
       <Container>
+            <div>
             <Form onSubmit={update}>    
-            <div className="body--activity">
+            <div className="">
                 <h2 className="ajout--title"> Modifier Boite de vitesse </h2>
                 <p> Boite : <input type="text" name="vitesse" /> </p>
                 <button type='submit' id='boutton'>Valider</button>
             </div>
             </Form>
+            </div>
         </Container>
          </>
     );
