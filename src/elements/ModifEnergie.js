@@ -15,7 +15,7 @@ const ModifEnergie = () => {
 
     useEffect(() => {
         async function fetchData() {
-          const result = await fetch(`energie`);
+          const result = await fetch(`https://ventevoitureback-production.up.railway.app/energie`);
           const body = await result.json();
           setGroups(body);
         }
@@ -32,7 +32,7 @@ const ModifEnergie = () => {
             "idEnergie":id,
             "energie": newItem
         }
-        axios.put(`/energie` , data)
+        axios.put(`https://ventevoitureback-production.up.railway.app/energie` , data)
         .then((response)=>{
             navigate('/energie');
         })

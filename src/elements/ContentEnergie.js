@@ -12,7 +12,7 @@ const ContentEnergie = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        axios.get('energie')
+        axios.get('https://ventevoitureback-production.up.railway.app/energie')
            .then(response => {
                 setGroups(response.data);
            })
@@ -22,7 +22,7 @@ const ContentEnergie = () => {
     }, []);
 
     function addItem(newItem) {
-        axios.post('energie', { energie: newItem })
+        axios.post('https://ventevoitureback-production.up.railway.app/energie', { energie: newItem })
            .then(response => {
                 setGroups([...groups, response.data]);
            })
@@ -39,7 +39,7 @@ const ContentEnergie = () => {
     }
 
     function remove(id) {
-        axios.delete(`marque/${id}`)
+        axios.delete(`https://ventevoitureback-production.up.railway.app/marque/${id}`)
            .then(response => {
              const newItems = groups.filter(group => group.idEnergie !== id);
              setGroups(newItems);

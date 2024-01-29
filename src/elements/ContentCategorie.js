@@ -13,7 +13,7 @@ const ContentCategorie = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        axios.get('categorie')
+        axios.get('https://ventevoitureback-production.up.railway.app/categorie')
            .then(response => {
                 setGroups(response.data);
            })
@@ -23,7 +23,7 @@ const ContentCategorie = () => {
     }, []);
 
     function addItem(newItem) {
-        axios.post('categorie', { categorie: newItem })
+        axios.post('https://ventevoitureback-production.up.railway.app/categorie', { categorie: newItem })
            .then(response => {
                 setGroups([...groups, response.data]);
            })
@@ -40,7 +40,7 @@ const ContentCategorie = () => {
     }
 
     function remove(id) {
-        axios.delete(`categorie/${id}`)
+        axios.delete(`https://ventevoitureback-production.up.railway.app/categorie/${id}`)
            .then(response => {
              const newItems = groups.filter(group => group.idCategorie !== id);
              setGroups(newItems);

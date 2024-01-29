@@ -10,7 +10,7 @@ const ContentBoiteVitesse = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        axios.get('vitesse')
+        axios.get('https://ventevoitureback-production.up.railway.app/vitesse')
            .then(response => {
                 setGroups(response.data);
            })
@@ -20,7 +20,7 @@ const ContentBoiteVitesse = () => {
     }, []);
 
     function addItem(newItem) {
-        axios.post('vitesse', { vitesse: newItem })
+        axios.post('https://ventevoitureback-production.up.railway.app/vitesse', { vitesse: newItem })
            .then(response => {
                 setGroups([...groups, response.data]);
            })
@@ -37,7 +37,7 @@ const ContentBoiteVitesse = () => {
     }
 
     function remove(id) {
-        axios.delete(`marque/${id}`)
+        axios.delete(`https://ventevoitureback-production.up.railway.app/marque/${id}`)
             .then(response => {
                 const newItems = groups.filter(group => group.idVitesse !== id);
                 setGroups(newItems);

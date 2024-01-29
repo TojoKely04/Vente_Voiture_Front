@@ -13,7 +13,7 @@ const ModifMarque = () => {
 
     useEffect(() => {
       async function fetchData() {
-        const result = await fetch('moteur');
+        const result = await fetch('https://ventevoitureback-production.up.railway.app/moteur');
         const body = await result.json();
         setGroups(body);
       }
@@ -30,7 +30,7 @@ const ModifMarque = () => {
             "idMarque": id,
             "marque" : newItem
         }
-        axios.put('/marque' , data)
+        axios.put('https://ventevoitureback-production.up.railway.app/marque' , data)
         .then((response)=>{
             navigate('/marque');
         })

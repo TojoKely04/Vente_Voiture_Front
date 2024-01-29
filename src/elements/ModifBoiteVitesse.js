@@ -11,7 +11,7 @@ const ModifBoiteVitesse = () => {
 
     useEffect(() => {
         async function fetchData() {
-          const result = await fetch(`vitesse`);
+          const result = await fetch(`https://ventevoitureback-production.up.railway.app/vitesse`);
           const body = await result.json();
           setGroups(body);
         }
@@ -28,7 +28,7 @@ const ModifBoiteVitesse = () => {
             "idVitesse": id, 
             "vitesse": newItem
         }
-        axios.put(`/vitesse`, data)
+        axios.put(`https://ventevoitureback-production.up.railway.app/vitesse`, data)
         .then(response => {
             navigate('/vitesse');
         })

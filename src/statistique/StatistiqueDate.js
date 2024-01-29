@@ -10,7 +10,7 @@ const Stats = () => {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        axios.get('/StatDate')
+        axios.get('https://ventevoitureback-production.up.railway.app/StatDate')
             .then(response => {
                 setChartData(response.data);
             })

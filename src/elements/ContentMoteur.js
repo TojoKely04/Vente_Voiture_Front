@@ -11,7 +11,7 @@ const ContentMoteur = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        axios.get('moteur')
+        axios.get('https://ventevoitureback-production.up.railway.app/moteur')
            .then(response => {
                 setGroups(response.data);
            })
@@ -21,7 +21,7 @@ const ContentMoteur = () => {
     }, []);
 
     function addItem(newItem) {
-        axios.post('moteur', { moteur: newItem })
+        axios.post('https://ventevoitureback-production.up.railway.app/moteur', { moteur: newItem })
            .then(response => {
                 setGroups([...groups, response.data]);
            })
@@ -38,7 +38,7 @@ const ContentMoteur = () => {
     }
 
     function remove(id) {
-        axios.delete(`moteur/${id}`)
+        axios.delete(`https://ventevoitureback-production.up.railway.app/moteur/${id}`)
            .then(response => {
              const newItems = groups.filter(group => group.idMoteur !== id);
              setGroups(newItems);

@@ -12,7 +12,7 @@ const ModifCategorie = () => {
 
     useEffect(() => {
         async function fetchData() {
-          const result = await fetch(`categorie`);
+          const result = await fetch(`https://ventevoitureback-production.up.railway.app/categorie`);
           const body = await result.json();
           setGroups(body);
         }
@@ -29,10 +29,10 @@ const ModifCategorie = () => {
             "idCategorie": id, 
             "categorie": newItem
         }
-        axios.put(`/categorie`, data)
+        axios.put(`https://ventevoitureback-production.up.railway.app/categorie`, data)
         .then(response => {
 
-            navigate('/categorie');
+            navigate('https://ventevoitureback-production.up.railway.app/categorie');
         })
         .catch(error => {
             console.error('Erreur lors de la suppression du post:', error);

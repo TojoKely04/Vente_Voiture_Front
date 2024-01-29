@@ -23,7 +23,7 @@ function Detail(){
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`/annonces/${id}`)
+        axios.get(`https://ventevoitureback-production.up.railway.app/annonces/${id}`)
         .then(response => {
             const donnee = response.data
             setDetails(donnee);
@@ -48,7 +48,7 @@ function Detail(){
                 "idAnnonce": id
             }            
         };
-       axios.post(`/annoncesRefuser`,data)
+       axios.post(`https://ventevoitureback-production.up.railway.app/annoncesRefuser`,data)
        .then(response => {
            navigate('/Annonce');
        })
@@ -64,7 +64,7 @@ function Detail(){
                 "idAnnonce": id
             }            
         };
-        axios.post('/annoncesAccepter',data)
+        axios.post('https://ventevoitureback-production.up.railway.app/annoncesAccepter',data)
         .then(response => {
             navigate('/Annonce');
         })

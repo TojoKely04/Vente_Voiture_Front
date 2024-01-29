@@ -10,7 +10,7 @@ const ContentMarque = () => {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        axios.get('marque')
+        axios.get('https://ventevoitureback-production.up.railway.app/marque')
            .then(response => {
                 setGroups(response.data);
            })
@@ -20,7 +20,7 @@ const ContentMarque = () => {
     }, []);
 
     function addItem(newItem) {
-        axios.post('marque', { marque: newItem })
+        axios.post('https://ventevoitureback-production.up.railway.app/marque', { marque: newItem })
            .then(response => {
                 setGroups([...groups, response.data]);
            })
@@ -37,7 +37,7 @@ const ContentMarque = () => {
     }
 
     function remove(id) {
-        axios.delete(`marque/${id}`)
+        axios.delete(`https://ventevoitureback-production.up.railway.app/marque/${id}`)
            .then(response => {
              const newItems = groups.filter(group => group.idMarque !== id);
              setGroups(newItems);

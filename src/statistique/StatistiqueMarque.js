@@ -11,7 +11,7 @@ const Stats = () => {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        axios.get('/StatMarque')
+        axios.get('https://ventevoitureback-production.up.railway.app/StatMarque')
             .then(response => {
                 setChartData(response.data);
             })
