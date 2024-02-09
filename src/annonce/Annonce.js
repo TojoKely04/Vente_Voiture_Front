@@ -46,6 +46,8 @@ const Liste = () => {
     <>    
       <Header/>
       <Container  style={{marginLeft:'90px'}}>
+      <h2 className="ajout--title"> Annonces non validées</h2>
+      <br></br>
         <Row xs={1} md={3} className="g-4" >
           {groupList}     
         </Row>

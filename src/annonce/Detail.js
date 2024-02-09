@@ -124,8 +124,11 @@ function Detail(){
     return(
         <div>
             {console.log(details.categorie)}
+            {console.log(details.marque)}
+
             <Header/>
                 <Container>
+                <h2 className="ajout--title"> Detail de l'Annonce</h2>
                     <Card className="horizontal-card">
                         <Row noGutters>
                             <Col md={4}>
@@ -133,7 +136,6 @@ function Detail(){
                             </Col>
                             <Col md={8}>
                                 <Card.Body>
-                                    <Card.Title>Details De L'Annonce</Card.Title>
                                     {apropos()}
                                     <Card.Text>
                                         <div>
